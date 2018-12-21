@@ -1,8 +1,8 @@
 # IP over USB
 
-This repository contains the embedded firmware demonstration of a virtual LwIP server
-connected to the USB NCM interface of an STM32 board.
-It's meant to be a starting point for IP over USB applications
+This repository contains the STM32 embedded firmware demonstration of a virtual network
+with a single lwIP server (DNS, DHCP, HTTP) presented on the USB network adapter interface.
+It's meant to be a starting point for IP over USB applications (using CDC-NCM protocol)
 and a low-cost IP stack development platform.
 
 ## How to use
