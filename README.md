@@ -1,4 +1,4 @@
-# IP over USB
+# IP over USB [![Build Status](https://travis-ci.org/IntergatedCircuits/IPoverUSB.svg?branch=master)](https://travis-ci.org/IntergatedCircuits/IPoverUSB)
 
 This repository contains the STM32 embedded firmware demonstration of a virtual network
 with a single lwIP server (DNS, DHCP, HTTP) presented on the USB network adapter interface.
