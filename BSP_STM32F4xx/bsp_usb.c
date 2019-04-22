@@ -34,7 +34,7 @@ static void BSP_USB_Init(void * handle)
     GPIO_vInitPin(USB_DM_PIN, USB_DM_CFG);
     GPIO_vInitPin(USB_DP_PIN, USB_DP_CFG);
 
-    NVIC_SetPriorityConfig(OTG_FS_IRQn, 0, 0);
+    NVIC_SetPriorityConfig(OTG_FS_IRQn, 0x6, 0);
     NVIC_EnableIRQ(OTG_FS_IRQn);
 }
 

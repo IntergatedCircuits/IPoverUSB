@@ -5,6 +5,10 @@ with a single lwIP server (DNS, DHCP, HTTP) presented on the USB network adapter
 It's meant to be a starting point for IP over USB applications (using CDC-NCM protocol)
 and a low-cost IP stack development platform.
 
+There are two possible supported software configurations:
+1. A bare-metal implementation using the lwIP native API.
+2. An RTOS implementation using FreeRTOS and the lwIP netconn API.
+
 ## How to use
 
 1. Build and flash the image on an STM32F4Discovery (easily portable to other STM32 targets)
@@ -18,6 +22,7 @@ and a low-cost IP stack development platform.
 * [lwIP][lwIP] 2.1.0 with additional dummy DHCP server for out of the box operation
 * DNS server implementation allows domain name based access
 * Reprogramming via USB supported by DFU interface (DFU standard implementation to reboot to ROM)
+* [FreeRTOS][FreeRTOS] variant allows the choice of any lwIP APIs to be used by the application
 
 ## Driver installation on Windows 10
 
@@ -38,5 +43,6 @@ you have to perform these steps for the "STM32 BOOTLOADER" device as well. The p
 - Manufacturer = STMicroelectronics
 - Model = STM32 BOOTLOADER
 
+[FreeRTOS]: https://www.freertos.org/
 [lwIP]: https://savannah.nongnu.org/projects/lwip/
 [USBDevice]: https://github.com/IntergatedCircuits/USBDevice

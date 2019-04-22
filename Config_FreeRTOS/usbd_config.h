@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file    ncm_netif.h
+  * @file    usbd_config.h
   * @author  Benedek Kupper
   * @version 0.1
-  * @date    2018-12-16
-  * @brief   USB-NCM interface virtually wired to lwIP server
+  * @date    2018-01-31
+  * @brief   Universal Serial Bus Device Driver
   *
   * Copyright (c) 2018 Benedek Kupper
   *
@@ -20,26 +20,34 @@
   * See the License for the specific language governing permissions and
   * limitations under the License.
   */
-#ifndef __NCM_NETIF_H_
-#define __NCM_NETIF_H_
+#ifndef __USBD_CONFIG_H_
+#define __USBD_CONFIG_H_
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
-#include <lwip/netif.h>
-#include <usbd_ncm.h>
+/** @addtogroup USBD
+ * @{ */
 
-extern USBD_NCM_IfHandleType *const ncm_usb_if;
+/** @addtogroup USBD_Exported_Macros USBD Exported Macros
+ * @{ */
 
-void ncm_netif_init(void);
-#if (NO_SYS == 1)
-void ncm_netif_process(void);
-#endif
+#define USBD_MAX_IF_COUNT           8
+
+#define USBD_EP0_BUFFER_SIZE        512
+
+/** @brief Set to 1 if DFU STMicroelectronics Extension
+ *  protocol (v1.1A) shall be used instead of the standard DFU (v1.1). */
+#define USBD_DFU_ST_EXTENSION       1
+
+/** @} */
+
+/** @} */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __NCM_NETIF_H_ */
+#endif /* __USBD_CONFIG_H_ */
