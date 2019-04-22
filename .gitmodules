@@ -7,3 +7,9 @@
 [submodule "STM32_XPD"]
 	path = STM32_XPD
 	url = https://github.com/IntergatedCircuits/STM32_XPD.git
+[submodule "lwip-contrib"]
+	path = lwip-contrib
+	url = git://git.savannah.nongnu.org/lwip/lwip-contrib.git
+[submodule "FreeRTOS"]
+	path = FreeRTOS
+	url = https://github.com/cjlano/freertos.git
