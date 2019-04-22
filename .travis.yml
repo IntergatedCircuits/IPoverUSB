@@ -10,4 +10,5 @@ before_install:
 - docker pull jumperio/vlab-gcc-arm:latest
 
 script:
-- docker run -v $PWD:/my_files_in_docker --entrypoint /usr/bin/make jumperio/vlab-gcc-arm -C my_files_in_docker
+- docker run -v $PWD:/my_files_in_docker --entrypoint /usr/bin/make jumperio/vlab-gcc-arm -C my_files_in_docker SERIES=STM32F4
+- docker run -v $PWD:/my_files_in_docker --entrypoint /usr/bin/make jumperio/vlab-gcc-arm -C my_files_in_docker SERIES=STM32F4 OS_DIR=FreeRTOS/FreeRTOS/Source

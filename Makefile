@@ -9,12 +9,14 @@ DEBUG = 1
 TARGET = IPoverUSB
 
 # Build path
-BUILD_DIR = build
+#BUILD_DIR = build
 
 # Submodule paths
 XPD_DIR = STM32_XPD
 USBD_DIR = USBDevice
 LWIPDIR = lwIP/src
+CONTRIBDIR = lwip-contrib
+OS_DIR =
 
 ##++----  Included files  ----++##
 include $(LWIPDIR)/Filelists.mk
@@ -42,7 +44,7 @@ BIN = $(CP) -O binary -S
 
 ##++----  MCU config  ----++##
 CPU = -mcpu=cortex-$(CORE)
-MCU = $(CPU) -mthumb -mfloat-abi=soft
+MCU = $(CPU) -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16
 
 
 ##++----  Assembler  ----++##
@@ -63,7 +65,6 @@ C_STANDARD = -std=gnu11
 C_INCLUDES =  \
 -I$(BSP) \
 -ICore \
--IConfig \
 -I$(LWIPDIR)/include \
 -I$(USBD_DIR)/Include \
 -I$(USBD_DIR)/PDs/STM32_XPD \
@@ -83,6 +84,49 @@ $(wildcard $(USBD_DIR)/Device/*.c) \
 $(wildcard $(USBD_DIR)/Class/CDC/*.c) \
 $(wildcard $(USBD_DIR)/Class/DFU/*.c) \
 $(wildcard $(XPD_DIR)/$(SERIES)_XPD/src/*.c)
+
+##++----  OS selection  ----++##
+
+ifeq ($(strip $(OS_DIR)),)
+# no OS
+
+C_INCLUDES += -IConfig
+
+BUILD_DIR = build
+
+else ifeq ($(findstring FreeRTOS,$(OS_DIR)),FreeRTOS)
+# FreeRTOS
+
+LWIP_OS_PORT = $(CONTRIBDIR)/ports/freertos
+
+ifeq ($(CORE),m0)
+PORT_CORE = GCC/ARM_CM0
+else ifeq ($(CORE),m3)
+PORT_CORE = GCC/ARM_CM3
+else ifeq ($(CORE),m4)
+PORT_CORE = GCC/ARM_CM4F
+else ifeq ($(CORE),m7)
+PORT_CORE = GCC/ARM_CM7
+endif
+
+C_INCLUDES +=  \
+-IConfig_FreeRTOS \
+-I$(LWIP_OS_PORT)/include \
+-I$(OS_DIR)/include \
+-I$(OS_DIR)/portable/$(PORT_CORE)
+
+C_SOURCES +=  \
+$(OS_DIR)/portable/MemMang/heap_4.c \
+$(wildcard $(LWIP_OS_PORT)/*.c) \
+$(wildcard $(OS_DIR)/*.c) \
+$(wildcard $(OS_DIR)/portable/Common/*.c) \
+$(wildcard $(OS_DIR)/portable/$(PORT_CORE)/*.c) \
+$(wildcard Core/os/*.c)
+
+BUILD_DIR = build_FreeRTOS
+
+endif
+
 
 # compiler flags
 CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections $(C_STANDARD)
