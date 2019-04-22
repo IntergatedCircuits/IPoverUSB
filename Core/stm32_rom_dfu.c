@@ -24,14 +24,14 @@
 #include <xpd_utils.h>
 
 static const char* stm32_dfu_if_name = "STM32 BOOTLOADER";
-static volatile boolean_t dfuRequested = FALSE;
+static volatile bool dfuRequested = false;
 
 static USBD_DFU_IfHandleType _dfu_if;
 USBD_DFU_IfHandleType *const stm32_rom_dfu_if = &_dfu_if;
 
 static void bootto_dfu_isr(void)
 {
-    dfuRequested = TRUE;
+    dfuRequested = true;
 }
 
 /**

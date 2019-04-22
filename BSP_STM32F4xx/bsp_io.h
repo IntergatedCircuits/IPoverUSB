@@ -30,20 +30,20 @@ extern "C"
 
 #include <xpd_gpio.h>
 
-#define USB_DP_PIN          GPIOA, 12
-#define USB_DM_PIN          GPIOA, 11
-#define USB_VBUS_PIN        GPIOA, 9
+#define USB_DP_PIN          PA12
+#define USB_DM_PIN          PA11
+#define USB_VBUS_PIN        PA9
 #define USB_DP_CFG          (&BSP_IOCfg[0])
 #define USB_DM_CFG          (&BSP_IOCfg[0])
 #define USB_VBUS_CFG        (&BSP_IOCfg[0])
 
-#define BUTTON_PIN          GPIOA, 0
+#define BUTTON_PIN          PA0
 #define BUTTON_CFG          (&BSP_IOCfg[1])
 
-#define LED6_BLUE_PIN       GPIOD, 15
-#define LED5_RED_PIN        GPIOD, 14
-#define LED3_ORANGE_PIN     GPIOD, 13
-#define LED4_GREEN_PIN      GPIOD, 12
+#define LED6_BLUE_PIN       PD15
+#define LED5_RED_PIN        PD14
+#define LED3_ORANGE_PIN     PD13
+#define LED4_GREEN_PIN      PD12
 #define LED6_BLUE_CFG       (&BSP_IOCfg[2])
 #define LED5_RED_CFG        (&BSP_IOCfg[2])
 #define LED3_ORANGE_CFG     (&BSP_IOCfg[2])
