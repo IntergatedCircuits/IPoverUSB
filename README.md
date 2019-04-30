@@ -11,7 +11,7 @@ There are two possible supported software configurations:
 
 ## How to use
 
-1. Build and flash the image on an STM32F4Discovery (easily portable to other STM32 targets)
+1. Build and flash the image on an STM32F4DISCOVERY or a 32L476GDISCOVERY (easily portable to other STM32 targets)
 2. Connect to PC via USB
 3. Fix any driver issues, see below
 4. Go to http://www.lwip.home

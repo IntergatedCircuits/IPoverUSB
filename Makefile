@@ -25,7 +25,7 @@ include $(LWIPDIR)/Filelists.mk
 
 CORE = m4
 SERIES = STM32F4
-BSP = BSP_STM32F4xx
+BSP = BSP_$(SERIES)xx
 
 C_DEFS = 
 
@@ -92,7 +92,7 @@ ifeq ($(strip $(OS_DIR)),)
 
 C_INCLUDES += -IConfig
 
-BUILD_DIR = build
+BUILD_DIR = build_baremetal_$(SERIES)
 
 else ifeq ($(findstring FreeRTOS,$(OS_DIR)),FreeRTOS)
 # FreeRTOS
@@ -123,7 +123,7 @@ $(wildcard $(OS_DIR)/portable/Common/*.c) \
 $(wildcard $(OS_DIR)/portable/$(PORT_CORE)/*.c) \
 $(wildcard Core/os/*.c)
 
-BUILD_DIR = build_FreeRTOS
+BUILD_DIR = build_FreeRTOS_$(SERIES)
 
 endif
 
