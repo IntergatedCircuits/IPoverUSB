@@ -24,25 +24,6 @@ There are two possible supported software configurations:
 * Reprogramming via USB supported by DFU interface (DFU standard implementation to reboot to ROM)
 * [FreeRTOS][FreeRTOS] variant allows the choice of any lwIP APIs to be used by the application
 
-## Driver installation on Windows 10
-
-Even though NCM is a standardized USB protocol (unlike RNDIS), and the necessary driver
-is already included by Microsoft, Windows doesn't bind the appropriate driver to it automatically.
-Here's a step by step guide to install the correct driver:
-
-1. Find the NCM interface device in Device Manager under "Other devices" (it goes under the name "LwIP gateway"
-2. Browse the computer for driver software
-3. Pick from available driver list
-4. Select "Network adapters" as device type
-5. Select "MSFT" manufacturer (it's code for Microsoft), "UsbNcm Host Device" model
-6. Profit
-
-In case you also want to use the bootloader functionality,
-you have to perform these steps for the "STM32 BOOTLOADER" device as well. The parameters are:
-- Device type = Universal Serial Bus devices
-- Manufacturer = STMicroelectronics
-- Model = STM32 BOOTLOADER
-
 [FreeRTOS]: https://www.freertos.org/
 [lwIP]: https://savannah.nongnu.org/projects/lwip/
 [USBDevice]: https://github.com/IntergatedCircuits/USBDevice
