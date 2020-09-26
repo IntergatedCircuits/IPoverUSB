@@ -42,7 +42,7 @@ USBD_DescriptionType _dev_cfg = {
             .Name           = "NCM Device Configuration",
             .MaxCurrent_mA  = 100,
             .RemoteWakeup   = 0,
-            .SelfPowered    = 0,
+            .SelfPowered    = 1,
     },
 }, *const dev_cfg = &_dev_cfg;
 
