@@ -42,6 +42,12 @@ extern "C"
  *  protocol (v1.1A) shall be used instead of the standard DFU (v1.1). */
 #define USBD_DFU_ST_EXTENSION       1
 
+/** @brief Selects which Microsoft OS descriptor specification should be used (if any).
+ * Supported values are: 0, 1, 2
+ * @note Microsoft OS 2.0 descriptors are supported by Windows 8.1 and higher.
+ * Unless the device is required to operate on earlier Windows OS versions, use version 2. */
+#define USBD_MS_OS_DESC_VERSION     2
+
 /** @} */
 
 /** @} */
